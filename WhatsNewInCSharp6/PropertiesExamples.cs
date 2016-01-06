@@ -27,14 +27,20 @@
         public OldImmutableClass(string theValue)
         {
             readOnlyBackingField = theValue;
-            PrivateAutoProperty = "Default value";
+            PseudoImmutableProperty = "Default value";
         }
 
         // Too much code again
         public string ReadOnlyProperty { get { return readOnlyBackingField;  } }
 
         // Not really immutable
-        public string PrivateAutoProperty { get; private set; }
+        public string PseudoImmutableProperty { get; private set; }
+
+        public override string ToString()
+        {
+            PseudoImmutableProperty = "Not really immutable";
+            return ReadOnlyProperty + " " + PseudoImmutableProperty;
+        }
     }
 
     /// <summary>
@@ -53,5 +59,10 @@
         // Readonly properties can also have default values,
         // but this value can still be overridden in a constructor
         public string ReadOnlyPropertyWithDefaultValue { get; } = "Default value";
+
+        public override string ToString()
+        {
+            return ReadOnlyProperty + " " + ReadOnlyPropertyWithDefaultValue;
+        }
     }
 }
