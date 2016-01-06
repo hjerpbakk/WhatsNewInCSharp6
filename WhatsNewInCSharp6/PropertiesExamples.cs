@@ -12,7 +12,7 @@
     }
 
     /// <summary>
-    /// Initializers for auto-properties
+    /// - Initializers for auto-properties
     /// </summary>
     public class NewDefaultValues
     {
@@ -44,7 +44,7 @@
     }
 
     /// <summary>
-    /// Getter-only auto-properties
+    /// - Getter-only auto-properties
     /// </summary>
     public class ProperImmutableClass
     {

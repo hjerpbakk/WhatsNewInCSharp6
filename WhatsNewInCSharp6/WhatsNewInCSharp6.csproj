@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExpressionBodiedMemberExample.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="PropertiesExamples.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

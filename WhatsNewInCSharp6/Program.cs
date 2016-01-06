@@ -28,7 +28,15 @@ namespace WhatsNewInCSharp6
             Console.Write("ToString: ");
             Console.WriteLine(properImmutable);
 
+            Console.WriteLine("");
+
+            var hjerpbakk = new Person("Runar", "Hjerpbakk", 32);
+            hjerpbakk.Print();
+            Console.WriteLine("Time moves fast...");
+            (++hjerpbakk).Print();
+
             Console.ReadKey();
+
         }
     }
 }
