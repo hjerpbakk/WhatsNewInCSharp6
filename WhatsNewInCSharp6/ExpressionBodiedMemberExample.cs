@@ -25,6 +25,7 @@ namespace WhatsNewInCSharp6
 
         public static Person operator ++(Person p) => new Person(p.first, p.last, p.age + 1);
 
+        // Must be a statement expression in methods returning void or Task
         public void Print() => Console.WriteLine(this);
     }
 }
