@@ -21,6 +21,7 @@ namespace WhatsNewInCSharp6
                 Console.WriteLine("null");
                 Console.WriteLine("string");
                 Console.WriteLine("initializers");
+                Console.WriteLine("exceptions");
                 return;
             }
 
@@ -49,6 +50,9 @@ namespace WhatsNewInCSharp6
                     return;
                 case "initializers":
                     Initializers();
+                    return;
+                case "exceptions":
+                    Exceptions();
                     return;
             }
         }
@@ -189,6 +193,28 @@ namespace WhatsNewInCSharp6
             };
 
             Console.WriteLine("It worked!!!");
+        }
+
+        private static void Exceptions()
+        {
+            var random = new Random();
+            for (int i = 0; i < 100; i++)
+            {
+                try
+                {
+                    var exceptionFilters = new ExceptionFilters();
+                    var result = exceptionFilters.WillItCrash(random.Next(43));
+                    Console.WriteLine("");
+                    Console.WriteLine("");
+                    Console.WriteLine("We got LUCKY!!! " + result);
+                    Console.WriteLine("");
+                    Console.WriteLine("");
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("No luck");
+                }
+            }
         }
     }
 }
