@@ -8,6 +8,7 @@ namespace WhatsNewInCSharp6
     {     
         public event PropertyChangedEventHandler PropertyChanged;
         
+        // ReSharper disable once NotAccessedField.Local
         int actionCounter;
         
         // Sooooo much code
