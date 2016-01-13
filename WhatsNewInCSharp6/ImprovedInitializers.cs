@@ -1,3 +1,7 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
 namespace WhatsNewInCSharp6
 {
     public class ImprovedInitializers : IEnumerable 
@@ -8,26 +12,28 @@ namespace WhatsNewInCSharp6
         {
             persons = new List<Person>
             {
-                new Person("", 1),
-                new Person("", 3)  
+                new Person("First", "Last", 1),
+                new Person("Another", "Person", 3)  
             };
             
             // Using the extension method
             persons = new List<Person>
             {
-                { "", 1 },
-                { "", 3 }  
+                { "First", "Last", 1 },
+                { "Another", "Person", 3 }  
             };
             
             // Old way using Add
-            var dictionary = new Dictionary<string, int> 
+            // ReSharper disable once UnusedVariable
+            var dict1 = new Dictionary<string, int> 
             {
                 { "Runar", 32 },
                 { "Isaac Newton", 373 }    
-            };0
-            
+            };
+
             // Using indexer
-            var dictionary = new Dictionary<string, int> 
+            // ReSharper disable once UnusedVariable
+            var dict2 = new Dictionary<string, int> 
             {
                 ["Runar"] = 32,
                 ["Isaac Newton"] = 373,   
@@ -39,7 +45,7 @@ namespace WhatsNewInCSharp6
             persons.Add(p);
         }
         
-        private IEnumerator IEnumerable.GetEnumerator() 
+        IEnumerator IEnumerable.GetEnumerator() 
         {
             throw new NotImplementedException("Only implemented for collection initializer.");    
         }
@@ -48,9 +54,9 @@ namespace WhatsNewInCSharp6
     // TODO: Use this in example
     public static class ThisIsNew
     {
-        public static void Add(this IList<Person> people, string name, int age) 
+        public static void Add(this IList<Person> people, string firstName, string lastName, uint age) 
         {
-            people.Add(new Person(name, age));
+            people.Add(new Person(firstName, lastName, age));
         }
     }
 }

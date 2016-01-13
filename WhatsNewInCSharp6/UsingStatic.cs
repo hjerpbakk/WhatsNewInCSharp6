@@ -1,4 +1,6 @@
 // Super awesome static using
+
+using System;
 using static System.Math; 
 using static System.DayOfWeek;
 
@@ -7,7 +9,7 @@ using static System.Linq.Enumerable;
 
 namespace WhatsNewInCSharp6
 {
-    public class UsingStatic() 
+    public class UsingStatic 
     {
         private readonly DayOfWeek calculationDay;
         
@@ -20,11 +22,11 @@ namespace WhatsNewInCSharp6
         {
             if (calculationDay != Wednesday) 
             {
-                return;    
+                return 0;    
             }
             
             // Such readability
-            return (Pi * e) / 0,2033270053; 
+            return (int)((PI * E) / 0.2033270053D); 
         }
         
         public int[] EvenNumbers(int lowerLimit, int upperLimit)

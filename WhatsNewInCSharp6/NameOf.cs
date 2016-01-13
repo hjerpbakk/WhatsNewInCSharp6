@@ -1,8 +1,14 @@
+using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+
 namespace WhatsNewInCSharp6
 {
     public class NameOf : INotifyPropertyChanged
     {
-        public void NameOf() 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public NameOf() 
         {
             Value1 = 1;
             Value2 = 2;    

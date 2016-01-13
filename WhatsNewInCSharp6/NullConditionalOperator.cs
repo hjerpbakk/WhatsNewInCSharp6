@@ -1,3 +1,7 @@
+using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+
 namespace WhatsNewInCSharp6
 {
     public class NullConditionalOperator : INotifyPropertyChanged 
@@ -10,13 +14,13 @@ namespace WhatsNewInCSharp6
         public bool ShouldGiveDrug(Prescription prescription)
         {   
             // Not even safe!
-            return prescription != null && prescription.Person != null && prescription.Person.FirstName == "Runar";
+            return prescription != null && prescription.Person != null && prescription.Person.Name == "Runar";
         }
         
         // Better? Better.
-        public bool ShouldGiveDrug(Prescription prescription)
+        public bool ShouldGiveImprovedDrug(Prescription prescription)
         {   
-            return prescription?.Person?.FirstName == "Runar";
+            return prescription?.Person?.Name == "Runar";
         }
         
         public void DoAction(Action theBestAction)
