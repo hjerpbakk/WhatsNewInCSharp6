@@ -41,10 +41,17 @@ namespace WhatsNewInCSharp6
             var temp = Value2;
             Value2 = Value1;
             Value1 = temp;
+            // ReSharper disable ExplicitCallerInfoArgument
             OnPropertyChanged(nameof(Value1));
             OnPropertyChanged(nameof(Value2));
+            // ReSharper restore ExplicitCallerInfoArgument
         }
-        
+
+        public override string ToString()
+        {
+            return Value1 + " " + Value2;
+        }
+
         // Old way, but new to us :(
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {

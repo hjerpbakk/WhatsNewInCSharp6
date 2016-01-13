@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExceptionFilters.cs" />
     <Compile Include="ExpressionBodiedMemberExample.cs" />
     <Compile Include="ImprovedInitializers.cs" />
     <Compile Include="NameOf.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="PropertiesExamples.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringInterpolation.cs" />
     <Compile Include="UsingStatic.cs" />
   </ItemGroup>
   <ItemGroup>
