@@ -1,4 +1,4 @@
-# WhatsNewInCSharp6
+# What's new in C# 6
 My take on what's new in C# 6. New features rankings of usefulness :
 
 1. Getter-only auto-properties
