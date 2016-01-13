@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
+using static WhatsNewInCSharp6.Person;
 
 namespace WhatsNewInCSharp6
 {
@@ -10,58 +10,37 @@ namespace WhatsNewInCSharp6
     {
         static void Main(string[] args)
         {
-            if (args.Length != 1)
+            var demos = typeof(Program).GetMethods(BindingFlags.Static | BindingFlags.NonPublic)
+                .Where(m => m.Name != "Main" && m.Name != "ShowUsage").ToList();
+            if (args.Length == 1)
             {
-                Console.WriteLine("Specify demo, try again. Avaiable demos:");
-                Console.WriteLine("");
-                Console.WriteLine("properties");
-                Console.WriteLine("expressions");
-                Console.WriteLine("static");
-                Console.WriteLine("nameof");
-                Console.WriteLine("null");
-                Console.WriteLine("string");
-                Console.WriteLine("initializers");
-                Console.WriteLine("exceptions");
-                return;
+                var demoToRun = demos.SingleOrDefault(m => m.Name.ToLower() == args[0]);
+                if (demoToRun != null)
+                {
+                    demoToRun.Invoke(null, null);
+                    Console.ReadLine();
+                    return;
+                }
             }
 
-            Console.WriteLine(args[0]);
-            Console.WriteLine("");
-            Console.WriteLine("***********************************");
-            switch (args[0])
-            {
-                case "properties":                  
-                    Properties();
-                    return;
-                case "expressions":
-                    Expressions();
-                    return;
-                case "static":
-                    Static();
-                    return;
-                case "nameof":
-                    NameOf();
-                    return;
-                case "null":
-                    Null();
-                    return;
-                case "string":
-                    String();
-                    return;
-                case "initializers":
-                    Initializers();
-                    return;
-                case "exceptions":
-                    Exceptions();
-                    return;
-            }
+            ShowUsage(demos);
+            Console.ReadLine();
         }
 
-        private static Person Runar => new Person("Runar", "Hjerpbakk", 32);
+        private static void ShowUsage(IEnumerable<MethodInfo> avaiableDemos)
+        {
+            Console.WriteLine("Specify a valid demo. Avaiable demos:");
+            Console.WriteLine("");
+            foreach (var demo in avaiableDemos)
+            {
+                Console.WriteLine(demo.Name.ToLower());
+            }
+        }
 
         /// <summary>
         /// Better Auto Properties
         /// </summary>
+        // ReSharper disable once UnusedMember.Local
         private static void Properties()
         {
             var oldImmutable = new OldImmutableClass("A good value");
@@ -86,6 +65,7 @@ namespace WhatsNewInCSharp6
         /// <summary>
         /// Expression-bodied members
         /// </summary>
+        // ReSharper disable once UnusedMember.Local
         private static void Expressions()
         {
             var hjerpbakk = Runar;
@@ -97,6 +77,7 @@ namespace WhatsNewInCSharp6
         /// <summary>
         /// Using static
         /// </summary>
+        // ReSharper disable once UnusedMember.Local
         private static void Static()
         {
             var usingStatic = new UsingStatic(DateTime.Now.DayOfWeek);
@@ -120,6 +101,7 @@ namespace WhatsNewInCSharp6
         /// <summary>
         /// nameof expressions
         /// </summary>
+        // ReSharper disable once UnusedMember.Local
         private static void NameOf()
         {
             try
@@ -144,6 +126,7 @@ namespace WhatsNewInCSharp6
         /// <summary>
         /// Null-conditional operator
         /// </summary>
+        // ReSharper disable once UnusedMember.Local
         private static void Null()
         {
             var nullConditionalOperator = new NullConditionalOperator();
@@ -166,6 +149,7 @@ namespace WhatsNewInCSharp6
         /// <summary>
         /// String interpolation
         /// </summary>
+        // ReSharper disable once UnusedMember.Local
         private static void String()
         {
             Console.WriteLine("String format is much improved:");
@@ -196,6 +180,7 @@ namespace WhatsNewInCSharp6
         /// <summary>
         /// Improved Initializers
         /// </summary>
+        // ReSharper disable once UnusedMember.Local
         private static void Initializers()
         {
 
@@ -219,10 +204,11 @@ namespace WhatsNewInCSharp6
         /// <summary>
         /// Exception filters
         /// </summary>
+        // ReSharper disable once UnusedMember.Local
         private static void Exceptions()
         {
             var random = new Random();
-            for (int i = 0; i < 100; i++)
+            for (var i = 0; i < 100; i++)
             {
                 try
                 {

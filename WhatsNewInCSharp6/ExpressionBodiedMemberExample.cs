@@ -28,5 +28,7 @@ namespace WhatsNewInCSharp6
 
         // Must be a statement expression in methods returning void or Task
         public void Print() => Console.WriteLine(this);
+
+        public static Person Runar => new Person("Runar", "Hjerpbakk", 32);
     }
 }
