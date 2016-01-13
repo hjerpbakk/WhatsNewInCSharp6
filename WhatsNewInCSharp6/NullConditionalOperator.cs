@@ -30,11 +30,9 @@ namespace WhatsNewInCSharp6
             theBestAction?.Invoke();
         }        
         
-        // Old way, but new to us :(
         // Verbose and needlesly complex
-        protected void OnPropertyChanged([CallerMemberName] string propertyName)
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            // To be thread safe
             PropertyChangedEventHandler propertyChanged = PropertyChanged;
             if (propertyChanged != null)
             {
@@ -43,7 +41,7 @@ namespace WhatsNewInCSharp6
         }
         
         // Proper way
-        protected void OnPropertyChangedProper([CallerMemberName] string propertyName) => 
+        protected void OnPropertyChangedProper([CallerMemberName] string propertyName = null) => 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
     
