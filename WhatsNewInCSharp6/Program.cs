@@ -18,6 +18,7 @@ namespace WhatsNewInCSharp6
                 Console.WriteLine("expressions");
                 Console.WriteLine("static");
                 Console.WriteLine("nameof");
+                Console.WriteLine("null");
                 return;
             }
 
@@ -38,30 +39,13 @@ namespace WhatsNewInCSharp6
                 case "nameof":
                     NameOf();
                     return;
+                case "null":
+                    Null();
+                    return;
             }
         }
 
         private static Person Runar => new Person("Runar", "Hjerpbakk", 32);
-
-        private static void Static()
-        {
-            var usingStatic = new UsingStatic(DateTime.Now.DayOfWeek);
-            var result = usingStatic.CalculateIfLuckyDay();
-            Console.Write("Today is ");
-            Console.Write(DateTime.Now.DayOfWeek);
-            Console.WriteLine(". Is this our lucky day?");
-            Console.WriteLine("");
-            Console.WriteLine(result == 42 ? "Yes" : "No");
-            Console.WriteLine("");
-
-            usingStatic = new UsingStatic(DayOfWeek.Friday);
-            var result2 = usingStatic.CalculateIfLuckyDay();
-            Console.Write("What about ");
-            Console.Write(DayOfWeek.Friday);
-            Console.WriteLine(". Is that our lucky day?");
-            Console.WriteLine("");
-            Console.WriteLine(result2 == 42 ? "Yes" : "No");
-        }
 
         private static void Properties()
         {
@@ -92,6 +76,26 @@ namespace WhatsNewInCSharp6
             (++hjerpbakk).Print();
         }
 
+        private static void Static()
+        {
+            var usingStatic = new UsingStatic(DateTime.Now.DayOfWeek);
+            var result = usingStatic.CalculateIfLuckyDay();
+            Console.Write("Today is ");
+            Console.Write(DateTime.Now.DayOfWeek);
+            Console.WriteLine(". Is this our lucky day?");
+            Console.WriteLine("");
+            Console.WriteLine(result == 42 ? "Yes" : "No");
+            Console.WriteLine("");
+
+            usingStatic = new UsingStatic(DayOfWeek.Friday);
+            var result2 = usingStatic.CalculateIfLuckyDay();
+            Console.Write("What about ");
+            Console.Write(DayOfWeek.Friday);
+            Console.WriteLine(". Is that our lucky day?");
+            Console.WriteLine("");
+            Console.WriteLine(result2 == 42 ? "Yes" : "No");
+        }
+
         private static void NameOf()
         {
             try
@@ -111,6 +115,25 @@ namespace WhatsNewInCSharp6
             Console.WriteLine("Swap");
             nameOf.Swap();
             Console.WriteLine(nameOf);
+        }
+
+        private static void Null()
+        {
+            var nullConditionalOperator = new NullConditionalOperator();
+
+            var prescription = new Prescription(Runar, "IPA");
+
+            Console.Write("Should ");
+            Console.Write(Runar);
+            Console.WriteLine(" get his drug of choice?");
+
+            Console.WriteLine("");
+            Console.WriteLine(nullConditionalOperator.ShouldGiveDrug(prescription));
+            Console.WriteLine("");
+
+            Console.WriteLine("What if the code is improved?");
+            Console.WriteLine("");
+            Console.WriteLine(nullConditionalOperator.ShouldGiveImprovedDrug(prescription));
         }
     }
 }

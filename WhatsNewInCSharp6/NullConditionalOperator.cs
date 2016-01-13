@@ -21,7 +21,7 @@ namespace WhatsNewInCSharp6
         // Better? Better.
         public bool ShouldGiveImprovedDrug(Prescription prescription)
         {   
-            return prescription?.Person?.Name == "Runar";
+            return prescription?.Person?.Name == "Runar Hjerpbakk";
         }
         
         public void DoAction(Action theBestAction)
