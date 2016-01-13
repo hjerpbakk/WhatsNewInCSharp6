@@ -19,6 +19,7 @@ namespace WhatsNewInCSharp6
                 Console.WriteLine("static");
                 Console.WriteLine("nameof");
                 Console.WriteLine("null");
+                Console.WriteLine("string");
                 return;
             }
 
@@ -41,6 +42,9 @@ namespace WhatsNewInCSharp6
                     return;
                 case "null":
                     Null();
+                    return;
+                case "string":
+                    String();
                     return;
             }
         }
@@ -134,6 +138,34 @@ namespace WhatsNewInCSharp6
             Console.WriteLine("What if the code is improved?");
             Console.WriteLine("");
             Console.WriteLine(nullConditionalOperator.ShouldGiveImprovedDrug(prescription));
+        }
+
+        private static void String()
+        {
+            Console.WriteLine("String format is much improved:");
+            Console.WriteLine("");
+
+            var stringInterpolation = new StringInterpolation();
+            Console.WriteLine("OldWay:");
+            Console.WriteLine(stringInterpolation.OldWay(Runar, "Awesome"));
+            Console.WriteLine("");
+
+            Console.WriteLine("NewWay:");
+            Console.WriteLine(stringInterpolation.OldWay(Runar, "Still Awesome"));
+            Console.WriteLine("");
+
+            Console.WriteLine("AlignmentAndFormatCanStillBeUsed:");
+            Console.WriteLine(stringInterpolation.AlignmentAndFormatCanStillBeUsed(Runar));
+            Console.WriteLine("");
+
+            Console.WriteLine("Alder er relativt:");
+            Console.WriteLine(stringInterpolation.ExpressionsToo(Runar));
+            Console.WriteLine("");
+
+            Console.WriteLine("Veldig relativt");
+            var newton = new Person("Isaac", "Newton", 373);
+            Console.WriteLine(stringInterpolation.ExpressionsToo(newton));
+
         }
     }
 }
