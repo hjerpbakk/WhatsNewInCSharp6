@@ -10,19 +10,8 @@ namespace WhatsNewInCSharp6
         
         public ImprovedInitializers() 
         {
-            persons = new List<Person>
-            {
-                new Person("First", "Last", 1),
-                new Person("Another", "Person", 3)  
-            };
-            
-            // Using the extension method
-            persons = new List<Person>
-            {
-                { "First", "Last", 1 },
-                { "Another", "Person", 3 }  
-            };
-            
+            persons = new List<Person>();
+
             // Old way using Add
             // ReSharper disable once UnusedVariable
             var dict1 = new Dictionary<string, int> 
@@ -51,10 +40,9 @@ namespace WhatsNewInCSharp6
         }
     }
     
-    // TODO: Use this in example
     public static class ThisIsNew
     {
-        public static void Add(this IList<Person> people, string firstName, string lastName, uint age) 
+        public static void Add(this ImprovedInitializers people, string firstName, string lastName, uint age) 
         {
             people.Add(new Person(firstName, lastName, age));
         }

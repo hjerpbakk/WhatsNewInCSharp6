@@ -20,6 +20,7 @@ namespace WhatsNewInCSharp6
                 Console.WriteLine("nameof");
                 Console.WriteLine("null");
                 Console.WriteLine("string");
+                Console.WriteLine("initializers");
                 return;
             }
 
@@ -45,6 +46,9 @@ namespace WhatsNewInCSharp6
                     return;
                 case "string":
                     String();
+                    return;
+                case "initializers":
+                    Initializers();
                     return;
             }
         }
@@ -165,7 +169,26 @@ namespace WhatsNewInCSharp6
             Console.WriteLine("Veldig relativt");
             var newton = new Person("Isaac", "Newton", 373);
             Console.WriteLine(stringInterpolation.ExpressionsToo(newton));
+        }
 
+        private static void Initializers()
+        {
+
+            // ReSharper disable once NotAccessedVariable
+            var improvedInitializers = new ImprovedInitializers
+            {
+                Runar,
+                new Person("Another", "Person", 42)
+            };
+
+            // ReSharper disable once RedundantAssignment
+            improvedInitializers = new ImprovedInitializers
+            {
+                { "First", "Last", 7 },
+                { "Such", "Savings", 42 },
+            };
+
+            Console.WriteLine("It worked!!!");
         }
     }
 }
