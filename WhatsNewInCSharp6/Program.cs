@@ -12,13 +12,21 @@ namespace WhatsNewInCSharp6
         {
             if (args.Length != 1)
             {
-                Console.WriteLine("Specify demo");
+                Console.WriteLine("Specify demo, try again. Avaiable demos:");
+                Console.WriteLine("");
+                Console.WriteLine("properties");
+                Console.WriteLine("expressions");
+                Console.WriteLine("static");
+                Console.WriteLine("nameof");
                 return;
             }
 
+            Console.WriteLine(args[0]);
+            Console.WriteLine("");
+            Console.WriteLine("***********************************");
             switch (args[0])
             {
-                case "properties":
+                case "properties":                  
                     Properties();
                     return;
                 case "expressions":
@@ -27,6 +35,9 @@ namespace WhatsNewInCSharp6
                 case "static":
                     Static();
                     return;
+                case "nameof":
+                    NameOf();
+                    return;
             }
         }
 
@@ -34,31 +45,22 @@ namespace WhatsNewInCSharp6
 
         private static void Static()
         {
-            try
-            {
-                // ReSharper disable once ObjectCreationAsStatement
-                new NameOf(null);
-            }
-            catch (ArgumentNullException e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            var usingStatic = new UsingStatic(DateTime.Now.DayOfWeek);
+            var result = usingStatic.CalculateIfLuckyDay();
+            Console.Write("Today is ");
+            Console.Write(DateTime.Now.DayOfWeek);
+            Console.WriteLine(". Is this our lucky day?");
+            Console.WriteLine("");
+            Console.WriteLine(result == 42 ? "Yes" : "No");
+            Console.WriteLine("");
 
-            var nameOf = new NameOf(Runar);
-            nameOf.PropertyChanged += (sender, args) => Console.WriteLine("Property name: " + args.PropertyName);
-
-            Console.WriteLine(nameOf);
-            Console.WriteLine("Swap");
-            nameOf.Swap();
-            Console.WriteLine(nameOf);
-        }
-
-        private static void Expressions()
-        {
-            var hjerpbakk = Runar;
-            hjerpbakk.Print();
-            Console.WriteLine("Time moves fast...");
-            (++hjerpbakk).Print();
+            usingStatic = new UsingStatic(DayOfWeek.Friday);
+            var result2 = usingStatic.CalculateIfLuckyDay();
+            Console.Write("What about ");
+            Console.Write(DayOfWeek.Friday);
+            Console.WriteLine(". Is that our lucky day?");
+            Console.WriteLine("");
+            Console.WriteLine(result2 == 42 ? "Yes" : "No");
         }
 
         private static void Properties()
@@ -80,6 +82,35 @@ namespace WhatsNewInCSharp6
             Console.WriteLine(properImmutable.ReadOnlyPropertyWithDefaultValue);
             Console.Write("ToString: ");
             Console.WriteLine(properImmutable);
+        }
+
+        private static void Expressions()
+        {
+            var hjerpbakk = Runar;
+            hjerpbakk.Print();
+            Console.WriteLine("Time moves fast...");
+            (++hjerpbakk).Print();
+        }
+
+        private static void NameOf()
+        {
+            try
+            {
+                // ReSharper disable once ObjectCreationAsStatement
+                new NameOf(null);
+            }
+            catch (ArgumentNullException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            var nameOf = new NameOf(Runar);
+            nameOf.PropertyChanged += (sender, args) => Console.WriteLine("Property name: " + args.PropertyName);
+
+            Console.WriteLine(nameOf);
+            Console.WriteLine("Swap");
+            nameOf.Swap();
+            Console.WriteLine(nameOf);
         }
     }
 }
