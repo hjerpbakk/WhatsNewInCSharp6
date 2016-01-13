@@ -2,6 +2,9 @@
 
 namespace WhatsNewInCSharp6
 {
+    /// <summary>
+    /// Example of C# 6 exception filters.
+    /// </summary>
     public class ExceptionFilters
     {
         public string WillItCrash(int fortuna)

@@ -4,6 +4,9 @@ using System.Runtime.CompilerServices;
 
 namespace WhatsNewInCSharp6
 {
+    /// <summary>
+    /// Shows usage of the null-conditional operator in C# 6
+    /// </summary>
     public class NullConditionalOperator : INotifyPropertyChanged 
     {     
         public event PropertyChangedEventHandler PropertyChanged;
@@ -15,6 +18,7 @@ namespace WhatsNewInCSharp6
         public bool ShouldGiveDrug(Prescription prescription)
         {   
             // Not even safe!
+            // ReSharper disable once MergeSequentialChecks
             return prescription != null && prescription.Person != null && prescription.Person.Name == "Runar";
         }
         
@@ -39,13 +43,14 @@ namespace WhatsNewInCSharp6
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChangedEventHandler propertyChanged = PropertyChanged;
+            // ReSharper disable once UseNullPropagation
             if (propertyChanged != null)
             {
                 propertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
         
-        // Proper way
+        // Proper way, 2 new features in one :)
         protected void OnPropertyChangedProper([CallerMemberName] string propertyName = null) => 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }

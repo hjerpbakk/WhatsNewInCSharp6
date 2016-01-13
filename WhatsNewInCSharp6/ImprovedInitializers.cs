@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace WhatsNewInCSharp6
 {
+    /// <summary>
+    /// Example of C# 6 improved initializer support.
+    /// </summary>
     public class ImprovedInitializers : IEnumerable 
     {
         readonly IList<Person> persons;
@@ -42,6 +45,7 @@ namespace WhatsNewInCSharp6
     
     public static class ThisIsNew
     {
+        // Extension methods can now be used in initializers
         public static void Add(this ImprovedInitializers people, string firstName, string lastName, uint age) 
         {
             people.Add(new Person(firstName, lastName, age));

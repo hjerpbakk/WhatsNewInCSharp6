@@ -4,6 +4,9 @@ using System.Runtime.CompilerServices;
 
 namespace WhatsNewInCSharp6
 {
+    /// <summary>
+    /// Shows usage of nameof operator in C# 6
+    /// </summary>
     public class NameOf : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -19,20 +22,20 @@ namespace WhatsNewInCSharp6
             // So error prone in notepad
             if (argument == null)
             {
+                // ReSharper disable once UseNameofExpression
                 throw new ArgumentNullException("argument");
             }
         }
         
         public NameOf(Person person) : this()
         {
-            // It just works
             if (person == null)
             {
+                // It just works
                 throw new ArgumentNullException(nameof(person));
             }
         }
         
-        // No backing fields, yeiii
         public int Value1 { get; private set; }
         public int Value2 { get; private set; }
         
@@ -57,6 +60,7 @@ namespace WhatsNewInCSharp6
         {
             // To be thread safe
             PropertyChangedEventHandler propertyChanged = PropertyChanged;
+            // ReSharper disable once UseNullPropagation
             if (propertyChanged != null)
             {
                 propertyChanged(this, new PropertyChangedEventArgs(propertyName));

@@ -31,6 +31,8 @@
         }
 
         // Too much code again
+        // ReSharper disable once ConvertToAutoProperty
+        // ReSharper disable once ConvertPropertyToExpressionBody
         public string ReadOnlyProperty { get { return readOnlyBackingField;  } }
 
         // Not really immutable

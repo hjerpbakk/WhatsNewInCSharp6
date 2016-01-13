@@ -59,6 +59,9 @@ namespace WhatsNewInCSharp6
 
         private static Person Runar => new Person("Runar", "Hjerpbakk", 32);
 
+        /// <summary>
+        /// Better Auto Properties
+        /// </summary>
         private static void Properties()
         {
             var oldImmutable = new OldImmutableClass("A good value");
@@ -80,6 +83,9 @@ namespace WhatsNewInCSharp6
             Console.WriteLine(properImmutable);
         }
 
+        /// <summary>
+        /// Expression-bodied members
+        /// </summary>
         private static void Expressions()
         {
             var hjerpbakk = Runar;
@@ -88,6 +94,9 @@ namespace WhatsNewInCSharp6
             (++hjerpbakk).Print();
         }
 
+        /// <summary>
+        /// Using static
+        /// </summary>
         private static void Static()
         {
             var usingStatic = new UsingStatic(DateTime.Now.DayOfWeek);
@@ -108,6 +117,9 @@ namespace WhatsNewInCSharp6
             Console.WriteLine(result2 == 42 ? "Yes" : "No");
         }
 
+        /// <summary>
+        /// nameof expressions
+        /// </summary>
         private static void NameOf()
         {
             try
@@ -129,6 +141,9 @@ namespace WhatsNewInCSharp6
             Console.WriteLine(nameOf);
         }
 
+        /// <summary>
+        /// Null-conditional operator
+        /// </summary>
         private static void Null()
         {
             var nullConditionalOperator = new NullConditionalOperator();
@@ -148,6 +163,9 @@ namespace WhatsNewInCSharp6
             Console.WriteLine(nullConditionalOperator.ShouldGiveImprovedDrug(prescription));
         }
 
+        /// <summary>
+        /// String interpolation
+        /// </summary>
         private static void String()
         {
             Console.WriteLine("String format is much improved:");
@@ -166,15 +184,18 @@ namespace WhatsNewInCSharp6
             Console.WriteLine(stringInterpolation.AlignmentAndFormatCanStillBeUsed(Runar));
             Console.WriteLine("");
 
-            Console.WriteLine("Alder er relativt:");
+            Console.WriteLine("Age is realative:");
             Console.WriteLine(stringInterpolation.ExpressionsToo(Runar));
             Console.WriteLine("");
 
-            Console.WriteLine("Veldig relativt");
+            Console.WriteLine("Very realative");
             var newton = new Person("Isaac", "Newton", 373);
             Console.WriteLine(stringInterpolation.ExpressionsToo(newton));
         }
 
+        /// <summary>
+        /// Improved Initializers
+        /// </summary>
         private static void Initializers()
         {
 
@@ -195,6 +216,9 @@ namespace WhatsNewInCSharp6
             Console.WriteLine("It worked!!!");
         }
 
+        /// <summary>
+        /// Exception filters
+        /// </summary>
         private static void Exceptions()
         {
             var random = new Random();

@@ -1,6 +1,6 @@
-// Super awesome static using
-
 using System;
+
+// Super awesome static using
 using static System.Math; 
 using static System.DayOfWeek;
 
@@ -9,6 +9,9 @@ using static System.Linq.Enumerable;
 
 namespace WhatsNewInCSharp6
 {
+    /// <summary>
+    /// Shows usage of static using statements in C# 6
+    /// </summary>
     public class UsingStatic 
     {
         private readonly DayOfWeek calculationDay;
@@ -26,7 +29,7 @@ namespace WhatsNewInCSharp6
             }
             
             // Such readability
-            return (int)((PI * E) / 0.2033270053D); 
+            return (int)(PI * E / 0.2033270053D); 
         }
         
         public int[] EvenNumbers(int lowerLimit, int upperLimit)
